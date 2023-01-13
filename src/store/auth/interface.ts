@@ -5,4 +5,5 @@ export interface AuthState {
   displayName: string | null;
   photoURL: string | null;
   errorMessage: string | null;
+  token:string | null;
 }
