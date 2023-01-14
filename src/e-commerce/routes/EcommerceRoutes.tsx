@@ -1,10 +1,15 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { EcommercePage } from "../pages/EcommercePage";
+import ProductDetails from "../pages/products/Components/ProductIDetails";
+import ProductsPage from "../pages/products";
+import { ECommerceLayout } from "../layout/ECommerceLayout";
 
 export const EcommerceRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<EcommercePage/>} />
+      <Route element={<ECommerceLayout />}>
+        <Route path="/" element={<ProductsPage />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+      </Route>
       <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   );

@@ -1,11 +1,13 @@
 import { Box } from '@mui/system'
-import React from 'react'
 import { NavBar } from '../components'
+import { Outlet } from 'react-router-dom'
 
 export const ECommerceLayout = () => {
+
   return (
     <Box>
       <NavBar />
+     <Outlet/>
     </Box>
   )
 }
