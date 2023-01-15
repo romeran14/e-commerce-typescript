@@ -2,14 +2,13 @@ import { FC } from 'react';
 import CartItem from './CartItem';
 import { CartProducts } from '../../../../store/cart/interface';
 
-import '../cart.css';
 
-interface ICartProps {
+interface CartProps {
   setIsSubmitOrder: (isSubmitOrder: boolean) => void;
   products: CartProducts[];
 }
 
-const Cart: FC<ICartProps> = ({ products, setIsSubmitOrder }) => {
+const Cart: FC<CartProps> = ({ products, setIsSubmitOrder }) => {
   if (!products.length) return <p>Cart is empty</p>;
 
   return (

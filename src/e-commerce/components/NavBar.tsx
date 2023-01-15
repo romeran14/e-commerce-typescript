@@ -16,13 +16,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { handleDrawerToggle } from "../../store/ui/uiSlice";
+import CartICon from "../pages/cart/components/CartIcon";
+import { Link as LinkRouter } from "react-router-dom";
 
 export const NavBar = () => {
   //Variables
   const { mobileOpen } = useSelector((state: RootState) => state.ui);
   const dispatch = useDispatch();
   const drawerWidth = 240;
-  const navItems = ["Example#1", "Example#2", "Example#3", "Example#4"];
+  const navItems = ["Example#1", "Example#2", "Example#3"];
 
   //Funciones
   const handleDrawer = () => {
@@ -37,6 +39,7 @@ export const NavBar = () => {
         E-Commerce
       </Typography>
       <Divider />
+    
       <List>
         {navItems.map((menuItem, key) => (
           <ListItem key={key} disablePadding>
@@ -45,7 +48,10 @@ export const NavBar = () => {
             </ListItemButton>
           </ListItem>
         ))}
+      
+        
       </List>
+      
     </Box>
   );
 
@@ -80,6 +86,7 @@ export const NavBar = () => {
               ))}
             </List>
           </Box>
+          <LinkRouter style={{color:'#fff'}} to='cart'>Cart<CartICon/></LinkRouter>
         </Toolbar>
       </AppBar>
       <Box component="nav">
