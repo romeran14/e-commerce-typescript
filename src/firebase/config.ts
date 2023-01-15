@@ -2,11 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { FirabaseConfigOptions } from "./interface";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore/lite";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig:FirabaseConfigOptions = {
   apiKey: "AIzaSyCoFCccc4nfVaRTQnF7znxWxb0ddxRAKdU",
   authDomain: "ecommerce-8797a.firebaseapp.com",
@@ -18,5 +22,6 @@ const firebaseConfig:FirabaseConfigOptions = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
+export const FirebaseApp = initializeApp(firebaseConfig);
+export const FirabaseAuth = getAuth(FirebaseApp);
+export const FirebaseDB = getFirestore( FirebaseApp);
