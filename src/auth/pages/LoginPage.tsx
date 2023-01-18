@@ -1,11 +1,6 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import {
-  startGoogleSignIn,
-  startCreatingUserWithEmailPassword,
-} from "../../store/auth/thunks";
-import { useChecking } from "../../hooks/useChecking";
-import { AnyAction } from "redux";
+import { startGoogleSignIn } from "../../store/auth/thunks";
 import { AppDispatch } from "../../store/store";
 import { AuthLayout } from "../layout/AuthLayout";
 import { Google } from "@mui/icons-material";
@@ -24,12 +19,6 @@ export const LoginPage = () => {
   const onGoogleSignIn = () => {
     console.log("onGoogleSingIn");
     dispatch(startGoogleSignIn());
-  };
-
-  const onRegister = (event: any) => {
-    event.preventDefault();
-    console.log("Register User");
-    dispatch(startCreatingUserWithEmailPassword(email, password, displayName));
   };
 
   return (
@@ -57,12 +46,7 @@ export const LoginPage = () => {
           <Grid container spacing={2} sx={{ mb: 2 }}>
             <Grid item xs={12} sx={{ mt: 3 }}></Grid>
             <Grid item xs={12} sm={6} sx={{ mt: 3 }}>
-              <Button
-                onClick={onRegister}
-                type="submit"
-                variant="contained"
-                fullWidth
-              >
+              <Button type="submit" variant="contained" fullWidth>
                 Login
               </Button>
             </Grid>

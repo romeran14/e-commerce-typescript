@@ -3,6 +3,7 @@ import { AuthState } from "../store/auth/interface";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
@@ -62,6 +63,40 @@ export const registerUserWithEmailPassword = async (
       photoURL,
       email,
       displayName,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      ok: false,
+    };
+  }
+};
+
+//----loginWithEmailPassword----//
+
+export const loginWithEmailPassword = async (
+  email: string,
+  password: string
+) => {
+  try {
+    const resp = await signInWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+    console.log({ resp });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//----ForgotPassword----//
+export const forgotPassword = async (email: string) => {
+  try {
+    const resp = await sendPasswordResetEmail(FirebaseAuth, email);
+    return {
+      ok: true,
+      email,
     };
   } catch (error) {
     console.error(error);
