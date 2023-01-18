@@ -9,7 +9,7 @@ export const baseApi = createApi({
     baseUrl: BASE_URL,
 
     prepareHeaders: (headers, { getState }) => {
-        const token = (getState() as RootState).auth.TOKEN
+        const token = (getState() as RootState).auth.token
     
         // If we have a token set in state, let's assume that we should be passing it.
         if (token) {

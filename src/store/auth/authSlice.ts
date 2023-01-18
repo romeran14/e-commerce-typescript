@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthState } from './interface';
 
 const initialState: AuthState = {
-  STATUS: "checking",
-  UID: null,
-  EMAIL: null,
-  DISPLAYNAME: null,
-  PHOTOURL: null,
-  ERRORMESSAGE: null,
-  TOKEN: null
+  status: "checking",
+  uid: null,
+  email: null,
+  displayName: null,
+  photoURL: null,
+  errorMessage: null,
+  token: null,
 };
 
 export const authSlice = createSlice({
@@ -17,24 +17,23 @@ export const authSlice = createSlice({
   reducers: {
     //Login State
     login: (state, { payload }: PayloadAction<AuthState>) => {
-      state.STATUS= "authenticated";
-      state.UID = payload?.UID;
-      state.EMAIL = payload?.EMAIL;
-      state.DISPLAYNAME = payload?.DISPLAYNAME;
-      state.PHOTOURL = payload.PHOTOURL;
-      state.ERRORMESSAGE = null;
+      state.status= "authenticated";
+      state.uid = payload?.uid;
+      state.email = payload?.email;
+      state.displayName = payload?.displayName;
+      state.photoURL = payload.photoURL;
+      state.errorMessage = null;
     },
     //Logout State
-    logout:(state , {payload}: PayloadAction<AuthState>) =>{
-      state.STATUS = "not-authenticated";
-      state.UID  = null;
-      state.EMAIL = null;
-      state.DISPLAYNAME = null;
-      state.ERRORMESSAGE = payload?.ERRORMESSAGE;
+    logout:(state) =>{
+      state.status = "not-authenticated";
+      state.uid  = null;
+      state.email = null;
+      state.displayName = null;
     },
     //checkingCredentials
     checkingCredentials:(state)=>{
-      state.STATUS = "checking";
+      state.status = "checking";
     }
   },
 });
