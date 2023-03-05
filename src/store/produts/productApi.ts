@@ -1,9 +1,10 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { baseApi } from '../services/api';
-import { Product, GetProductsResponse,  GetProductsProps, Category } from './interface';
-import { collection, query, limit as limitador, getDocs, startAt, orderBy } from 'firebase/firestore/lite';
+import { Product, GetProductProps,  GetProductsProps, Category } from './interface';
+import { collection, query, limit as limitador, getDocs, startAt, orderBy, where } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
 import { getCount } from 'firebase/firestore/lite';
+
 
 const productApi = baseApi
   // .enhanceEndpoints({
@@ -25,7 +26,7 @@ const productApi = baseApi
             querySnapshot.docs.map( doc => {
               products.push({ id: doc.id, ...doc.data() } as Product);
             } )
-           // console.log(responseArray)
+
             return {
               data: {
                 products, 
@@ -33,11 +34,6 @@ const productApi = baseApi
                 limit
               }
             }
-/* 
-            
-            querySnapshot?.forEach((doc:any) => {
-              scoresTables.push({ id: doc.id, ...doc.data() } as Product);
-            });*/
            
           } catch (error: any) {
             console.error(error.message);
@@ -48,10 +44,35 @@ const productApi = baseApi
       }),
      
 
-      /*
-      getProduct: build.query<Product, { id: string }>({
-        query: ({ id }) => `/products/${id}`,
+     
+      getProduct: build.query<any, GetProductProps>({
+     
+          async queryFn({id}) {
+            try {
+        
+              const refId = collection(FirebaseDB, 'products')
+              const qId = query(refId, where("id", "==",Number(id)))
+              const querySnapshotId = await getDocs(qId)
+              
+              let productArray: Product[] = []; 
+              querySnapshotId.docs.map( doc => {
+                productArray.push({ id: doc.id, ...doc.data() } as Product);
+              } )
+             const product =productArray[0]
+              return {
+                data: {
+                   product
+                }
+              }
+             
+            } catch (error: any) {
+              console.error(error.message);
+              return { error: error.message };
+            }
+          }
       }),
+      
+       /*
       getCategories: build.query<Category[], void>({
         query: () => '/products/categories',
         transformResponse: (response: string[]) =>
@@ -71,5 +92,5 @@ const productApi = baseApi
 
 export const {
   useGetProductsQuery,
-
+  useGetProductQuery
 } = productApi;

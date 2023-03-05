@@ -25,7 +25,7 @@ const ProductItem: FC<Product> = ({ id, title, price, rating, thumbnail }) =>{
           {rating}
         </div>
         <div onClick={() => setAddToCartBtnState(true)} >
-        <AddToCartBtn id={id}>{addToCartBtnState? 'Added to cart' : 'Add to Cart'}</AddToCartBtn>
+        <AddToCartBtn id={Number(id)}>{addToCartBtnState? 'Added to cart' : 'Add to Cart'}</AddToCartBtn>
         </div>
         
       </div>

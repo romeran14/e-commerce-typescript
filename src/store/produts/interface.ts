@@ -22,6 +22,11 @@ export interface Product {
   export interface GetProductsProps {
     limite: number;
     skip: number;
+  
+  }
+
+  export interface GetProductProps {
+    id: string;
   }
   
   export interface Category {

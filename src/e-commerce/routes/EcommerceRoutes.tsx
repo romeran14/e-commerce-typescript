@@ -9,8 +9,8 @@ export const EcommerceRoutes = () => {
     <Routes>
       <Route element={<ECommerceLayout />}>
         <Route path="/" element={<ProductsPage />} />
-     { /*  <Route path="/products/:id" element={<ProductDetails />} />*/}
-        <Route path="/cart" element={<CartPage/>} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<CartPage />} />
       </Route>
       <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
