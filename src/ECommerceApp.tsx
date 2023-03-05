@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export const ECommerceApp = () => {
   const { setProducts } = useActions();
-  const { data, error, isLoading, isSuccess } = useGetProductsQuery({ limit: 100, skip: 0 });
+  const { data, error, isLoading, isSuccess } = useGetProductsQuery({ limite: 100, skip: 0 });
 
   useEffect(() => {
     if (isSuccess) {

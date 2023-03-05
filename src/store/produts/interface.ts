@@ -1,5 +1,5 @@
 export interface Product {
-    id: number;
+    id: string;
     title: string;
     description: string;
     price: number;
@@ -16,11 +16,11 @@ export interface Product {
     products: Product[];
     total: number;
     skip: number;
-    limit: number;
+    limite: number;
   }
   
   export interface GetProductsProps {
-    limit: number;
+    limite: number;
     skip: number;
   }
   
