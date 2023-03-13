@@ -1,5 +1,5 @@
 export enum ThemePalette {
-  BLACK = "#0000",
-  WHITE = "#FFFF",
+  BLACK = "#000000",
+  WHITE = "#FFFFFF",
   RED = "#c30010"
 }
